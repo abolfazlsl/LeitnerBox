@@ -1,0 +1,35 @@
+Project LeitnerBox {
+  database_type: 'PostgreSQL'
+  Note: 'Leitner Box Learning System Database'
+}
+
+Table users {
+  id integer [pk, increment]
+  username varchar [not null, unique]
+  created_at timestamp [default: `now()`]
+}
+
+Table slots {
+  id integer [pk] // 1, 2, 3, 4, 5
+  delay_days integer [not null] // e.g. 1, 3, 7, 15, 30
+  note varchar
+}
+
+Table cards {
+  id integer [pk, increment]
+  user_id integer [ref: > users.id]
+  slot_id integer [ref: > slots.id, default: 1]
+  question text [not null]
+  answer text [not null]
+  last_reviewed_at timestamp
+  created_at timestamp [default: `now()`]
+}
+
+Table card_reviews {
+  id integer [pk, increment]
+  card_id integer [ref: > cards.id]
+  reviewed_at timestamp [default: `now()`]
+  is_correct boolean [not null]
+  from_slot integer
+  to_slot integer
+}

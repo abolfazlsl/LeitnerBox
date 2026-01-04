@@ -1,0 +1,2 @@
+class CardReview:
+    pass
