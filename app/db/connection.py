@@ -4,11 +4,6 @@ from psycopg2.extras import RealDictCursor
 from app.config import Config
 
 class Database:
-    # TODO: [Member 2] Implement PostgreSQL connection using psycopg2 and context manager.
-    # Requirements:
-    # 1. Initialize connection using Config variables
-    # 2. Implement a method to get a cursor
-    # 3. Implement execute_query and fetch_all methods
 
     def __init__(self):
         self.params = Config.get_db_config()
@@ -30,10 +25,9 @@ class Database:
         return self.conn.cursor(cursor_factory=RealDictCursor)
 
     def execute_query(self, query, params=None):
-        #INSERT , DELETE , UPDATE
         with self.get_cursor() as cursor:
             cursor.execute(query, params)
-            return cursor
+            return cursor.rowcount
 
     def fetch_all(self, query, params=None):
         #SELECT
