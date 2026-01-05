@@ -1,7 +1,7 @@
-INSERT INTO slots (id, delay_days, note) VALUES 
-(1, 1, 'First review: 1 day'),
-(2, 3, 'Second review: 3 days'),
-(3, 7, 'Third review: 7 days'),
-(4, 15, 'Fourth review: 15 days'),
-(5, 30, 'Fifth review: 30 days')
+INSERT INTO slots (id, name, review_interval_days) VALUES 
+(1, 'Slot 1', 1),
+(2, 'Slot 2', 3),
+(3, 'Slot 3', 7),
+(4, 'Slot 4', 15),
+(5, 'Slot 5', 30)
 ON CONFLICT (id) DO NOTHING;
