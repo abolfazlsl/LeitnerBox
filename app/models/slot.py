@@ -4,7 +4,7 @@ class Slot:
         self.name = name
         self.review_interval_days = review_interval_days
 
-    #Output of database -> Slot instance
+    # Output of database -> Slot instance
     @staticmethod
     def from_dict(data):
         if not data:
